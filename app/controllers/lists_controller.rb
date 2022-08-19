@@ -6,6 +6,8 @@ class ListsController < ApplicationController
   end
 
   def show
+    @bookmark = Bookmark.new
+    @bookmarks = Bookmark.where(list_id: params[:id])
   end
 
   def new
@@ -25,7 +27,7 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, photos: [])
   end
 
   def set_list

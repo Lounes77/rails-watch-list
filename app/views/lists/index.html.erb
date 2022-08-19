@@ -1,13 +1,35 @@
 <div class="container">
-  <h1>Lists</h1>
-  <p>All lists movies.</p>
-  <ul>
-    <% @lists.each do |list|  %>
-      <li> <%= link_to list.name, list_path(list) %></li>
-    <% end %>
-  </ul>
-</div>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+      <h1>Keep your movies collections</h1>
+  </div>
 
-<div>
+<h1>My Lists</h1>
+
+<div class="btn btn-ghost">
   <%= link_to "Create list", new_list_path %>
 </div>
+
+
+  <div class="cards">
+    <% @lists.each do |list|  %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(cl_image_tag("THE_IMAGE_ID_FROM_LIBRARY",
+      width: 400, height: 300, crop: :fill))">
+      <%= link_to list.name, list_path(list) %>
+    </div>
+      <% end  %>
+    </div>
+  </div>
+</div>
+
+<!--
+<%= cl_image_tag("THE_IMAGE_ID_FROM_LIBRARY",
+      width: 400, height: 300, crop: :fill) %> -->
+<!-- for face detection -->
+
+<!--
+<%= cl_image_tag("IMAGE_WITH_FACE_ID",
+      width: 150, height: 150, crop: :thumb, gravity: :face) %>
+
+
+
+-->

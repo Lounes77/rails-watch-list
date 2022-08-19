@@ -1,16 +1,49 @@
-<div>
-  <h1><%= @list.name %></h1>
-  <ul>
-    <% @list.bookmarks.each do |bookmark| %>
-      <li><%= bookmark.comment %> <%= link_to 'delete', bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: 'Are Your sure ?' }  %> </li>
-    <% end  %>
-  </ul>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+    <p>Change your life and learn to code at one of our campuses around the world.</p>
+    <a class="btn btn-flat" href="#">Apply now</a>
+  </div>
 </div>
 
+<div class="container">
+  <h1><%= @list.name %></h1>
+  <ul>
+  <a class="btn btn-pin" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Create a Bookmark 📍</a>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+              <%= simple_form_for([@list, @bookmark]) do |f| %>
+                <%= f.association :movie %>
+                <%= f.input :comment %>
+                <%= f.submit "Create bookmark", class: "btn btn-pin border mt-3" %>
+              <% end %>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+</ul>
+
+<% @list.bookmarks.each do |bookmark| %>
+  <%= link_to 'delete', bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: 'Are Your sure ?' }  %>
+ <% end  %>
 
 <div>
 |
   <%= link_to "Back to lists", lists_path %> |
-  <%= link_to 'create bookmark', new_list_bookmark_path(@list)  %>
-
 </div>
+
+<!--
+</div>
+<% @list.photos.each do |photo| %>
+<%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+ <div class="card-category"
+
+>
+  Cool article
+</div>
+-->
